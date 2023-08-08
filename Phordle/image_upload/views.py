@@ -7,7 +7,7 @@ def index(request):
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect(index)
+        return redirect("feed/")
     else:
         initial_data = {'object': 'kys <3'}
         form = ImageForm(initial=initial_data)

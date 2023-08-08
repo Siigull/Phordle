@@ -31,6 +31,8 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.10.9']
 # Application definition
 
 INSTALLED_APPS = [
+    'feed.apps.FeedConfig',
+    'user.apps.UserConfig',
     'image_upload.apps.ImageUploadConfig',
     'django.contrib.admin',
     'django.contrib.auth',
