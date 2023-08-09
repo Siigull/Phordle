@@ -3,6 +3,7 @@ from .forms import RegisterForm
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.views import LoginView
+from django.http import HttpResponse
 
 def sign_up(request):
     if request.method == 'GET':
@@ -23,4 +24,9 @@ def sign_up(request):
 class SignIn(LoginView):
     template_name = 'user/login.html'
     next_page = 'feed:feed'
+
+def sign_out(request):
+    logout(request)
+    messages.success(request, "You have logged out successfully.")
+    return HttpResponse()
     

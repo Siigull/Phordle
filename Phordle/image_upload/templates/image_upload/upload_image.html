@@ -1,8 +1,10 @@
-{% extends 'templates/base.html' %}
+{% extends 'base.html' %}
 
-<h1>Upload An Image</h1>
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit"><></button>
-</form>
+{% block content %}
+  <h1>Upload An Image</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"><></button>
+  </form>
+{% endblock %}
