@@ -1,12 +1,27 @@
+{% extends 'base.html' %}
 {% block content %}
+<!DOCTYPE html>
+<html lang="en-us">
 <head>
+	<style>
+		body {
+			text-align: center;
+		}
+		.container {
+			width: 50%;
+			margin: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	</style>
 	<title>Register</title>
 </head>
 <body>
 	<div class=container>
 		<form method="POST" novalidate>
 			{% csrf_token %}
-			<h2>Sign Up</h2>
+			<h2 class="text-center">Sign Up</h2>
 			{{ form.as_p }}
 			<input type="submit" value="Register" />
 		</form>
