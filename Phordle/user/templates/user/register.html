@@ -5,12 +5,18 @@
 <head>
 	<style>
 		body {
-			text-align: center;
+			height: 100vh;
+			background-color: #4f4f4f;
 		}
-		.container {
-			width: 50%;
+		.comtainer {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.form {
 			margin: 0;
 			display: flex;
+			flex-direction: column;
 			align-items: center;
 			justify-content: center;
 		}
@@ -19,9 +25,9 @@
 </head>
 <body>
 	<div class=container>
-		<form method="POST" novalidate>
+		<form class="form" method="POST" novalidate>
 			{% csrf_token %}
-			<h2 class="text-center">Sign Up</h2>
+			<h2 class="text-center; text-color">Sign Up</h2>
 			{{ form.as_p }}
 			<input type="submit" value="Register" />
 		</form>
