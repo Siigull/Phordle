@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <h1> {{request.user.get_username }} </h1>
+        {% if user_profile_images %}
+        <ul>
+            {% for image in user_profile_images %}
+                
+            <img alt="" src="{{ image.image.url }}">
+                
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% else %}
+        <p>Not logged in</p>
+    {% endif %}
+{% endblock content %}

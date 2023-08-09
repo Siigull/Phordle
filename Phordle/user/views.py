@@ -4,6 +4,10 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.views import LoginView
 from django.http import HttpResponse
+from django.views import generic
+from django.utils import timezone
+
+from feed.models import Image
 
 def sign_up(request):
     if request.method == 'GET':
@@ -29,4 +33,10 @@ def sign_out(request):
     logout(request)
     messages.success(request, "You have logged out successfully.")
     return HttpResponse()
-    
+
+class Profile(generic.ListView):
+    template_name = 'user/profile.html'
+    context_object_name = 'user_profile_images'
+
+    def get_queryset(self):
+        return Image.objects.filter(pub_date__lte=timezone.now()).order_by("-pub_date")
