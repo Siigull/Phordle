@@ -27,7 +27,7 @@ def sign_up(request):
 
 class SignIn(LoginView):
     template_name = 'user/login.html'
-    next_page = 'feed:feed'
+    next_page = 'theme:quickstart'
 
 def sign_out(request):
     logout(request)

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if  quickstart_list %}
+        {% for theme in quickstart_list %}
+                        
+            <a href="{% url '{{ theme. }}' %}">
+            <p>{{ theme.name }}</p>
+            
+        {% endfor %}
+    {% else %}
+        <p>You should never see this, quickstart themes missing</p>
+    {% endif %}
+{% endblock %}

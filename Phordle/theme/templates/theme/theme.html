@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% csrf_token %}
+    <fieldset>
+        <h1>{{ theme.name }}</h1>
+        <p>{{ theme.word_0 }}</p>
+        <p>{{ theme.word_1 }}</p>
+        <p>{{ theme.word_2 }}</p>
+    </fieldset>
+    
+{% endblock %}

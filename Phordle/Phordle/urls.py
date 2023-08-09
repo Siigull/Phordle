@@ -21,6 +21,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('', include('image_upload.urls')),
+    path('theme/', include('theme.urls')),
     path('admin/', admin.site.urls),
     path('user/', include('user.urls')),
     path('feed/', include('feed.urls')),
