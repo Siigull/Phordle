@@ -1,13 +1,61 @@
 <!-- base.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
 <head>
     {% load bootstrap5 %}
     {% bootstrap_css %}
     <!-- Common meta tags, styles, etc. -->
-</head>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --primary-color: #252525;
+            --secondary-color: #4c4c4c;
+            --font-size: 20px;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .custom-navbar {
+            background-color: var(--primary-color);     
+        }
+
+        .custom-navbar .navbar-brand {
+            color: white;
+        }
+
+        .custom-navbar .nav-link {
+            color: white;
+        }
+
+        @media screen and (max-width: 576px) {
+			.card {
+				max-width: 90%;
+				height: auto;
+				padding: 1rem;
+			}
+		}
+		
+		@media screen and (max-width: 768px), (max-height: 708px) {
+			.card {
+				max-width: 80%;
+				height: auto;
+				padding: 1.5rem;
+			}
+		}
+		
+		@media screen and (max-height: 500px) {
+			.card {
+				max-width: 25rem;
+				height: 65vh;
+				padding: 1.5rem;
+			}
+			.btn {
+				margin-top: 1rem;
+			}
+		}
+    </style>
+    <link rel="shortcut icon" href="Temp-Logo.png" type="image/x-icon">
 <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg custom-navbar">
         <ul class="navbar-nav mr-auto">
             <li class='nav-item'>
                 <a class="navbar-brand" href="{% url 'feed:feed' %}">
@@ -17,14 +65,14 @@
         
             {% if request.user.is_authenticated %}
                 <li class='nav-item'>
-                    <a class='nav-link' href="{% url 'logout' %}">logout</a>
+                    <a class='nav-link' href="{% url 'logout' %}">Log Out</a>
                 </li>
                 <li class='nav-item'>
                     <a class='nav-link' href="{% url 'profile' %}">profile</a>
                 </li>
             {% else %}
                 <li class='nav-item'>
-                    <a class='nav-link' href="{% url 'login' %}">login</a>
+                    <a class='nav-link' href="{% url 'login' %}">Log In</a>
                 </li>
             {% endif %}
         </ul>
