@@ -40,4 +40,7 @@ class Profile(generic.ListView):
 
     def get_queryset(self):
         return Image.objects.filter(pub_date__lte=timezone.now()).order_by("-pub_date")
+
+def sign_in_anon(request):
+    return redirect('image_upload')
         
