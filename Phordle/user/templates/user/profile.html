@@ -4,13 +4,15 @@
     {% if request.user.is_authenticated %}
         <h1> {{request.user.get_username }} </h1>
         {% if user_profile_images %}
-        <ul>
-            {% for image in user_profile_images %}
-                
-            <img alt="" src="{{ image.image.url }}">
-                
-            {% endfor %}
-        </ul>
+            <ul>
+                {% for image in user_profile_images %}
+                    
+                <img alt="" src="{{ image.image.url }}">
+                    
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p> You haven't posted any images yet. </p>
         {% endif %}
     {% else %}
         <p>Not logged in</p>
