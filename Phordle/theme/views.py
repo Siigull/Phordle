@@ -28,8 +28,10 @@ def create_theme(request):
             messages.success(request, 'You have created the theme successfully.')
             return HttpResponseRedirect(reverse('theme:theme', args = (theme.id,)))
         else:
-            return render(request, 'theme/create_theme.html', { 'form': form}) 
+            return render(request, 'theme/create_theme.html', { 'form': form})
         
 class ThemeView(DetailView):
     model=Theme
     template_name="theme/theme.html"
+
+    # context_object_name = 'q'

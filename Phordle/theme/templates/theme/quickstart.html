@@ -4,7 +4,7 @@
     {% if  quickstart_list %}
         {% for theme in quickstart_list %}
                         
-            <a href="{% url '{{ theme. }}' %}">
+            <a href="{% url 'theme:theme' theme.id %}">
             <p>{{ theme.name }}</p>
             
         {% endfor %}
