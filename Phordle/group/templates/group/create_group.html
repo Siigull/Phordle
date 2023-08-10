@@ -37,16 +37,17 @@
     }
     </style>
 </head>
-<form method="post">
-    <div class="container">
-        {% csrf_token %}
+<body>
+    <form method="post">
+        <div class="container">
+            {% csrf_token %}
 
-        <table>
-            {{ form }}
-            {{ formset }}
-        </table>
-        <button class="btn" type="submit">Submit</button>
-    </div>
-    
-</form>
+            <table>
+                {{ form }}
+                {{ formset }}
+            </table>
+            <button class="btn" type="submit">Submit</button>
+        </div>
+    </form>
+</body>
 {% endblock %}

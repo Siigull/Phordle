@@ -12,6 +12,7 @@
     }
     </style>
 </head>
+<body>
     <h1 style="margin-bottom: 1rem;">{{ group.name }}</h1>
     <form method="post">
         {% csrf_token %}    
@@ -21,4 +22,5 @@
             <p> User not found </p>
         {% endif %}
     </form>
+</body>
 {% endblock %}
