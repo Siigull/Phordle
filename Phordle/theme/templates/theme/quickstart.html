@@ -9,42 +9,36 @@
             height: 100vh;
         }
 
-        .wrapper {
-            display: flex;
-            height: 100vh;
-            justify-content: center; /* Horizontally center the .container */
-        }
-
         .container {
             display: flex;
+            gap: 2rem;
             align-items: center;
-            justify-content: center; /* Center the <a> elements horizontally */
-            gap: 10px; /* Add spacing between <a> elements */
-            max-width: 600px; /* Adjust the maximum width as needed */
+            justify-content: center; /* Center the <a> elements horizontally */            max-width: 600px; /* Adjust the maximum width as needed */
+            height: 100%;
             width: 100%; /* Expand the container to its parent's width */
         }
 
         .quickstart-link{
-            border-radius: 1rem;
-            width: 20px;
-            max-width: 40rem; /* Adjust this as needed for larger screens */
-            padding: 2rem;
-            text-align: center;
-            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
+            flex: 1;
+            background-color: var(--secondary-color);
+            height: 20vh;
+            border-radius: 1rem;
+            border: solid .5rem var(--primary-color);
         }
     </style>
     <title>Themes</title>
 </head>
 <body>
     {% if  quickstart_list %}
-        <div class="wrapper">
-            <div class="container">
-                {% for i in quickstart_list %}
-                    <a class="quickstart-link" href="{% url 'theme:theme' i.id %}">
-                    <p>{{ i.name }}</p>
-                {% endfor %}
-            </div>
+        <div class="container">
+            {% for i in quickstart_list %}
+                <a class="quickstart-link" href="{% url 'theme:theme' i.id %}">
+                <p>{{ i.name }}</p>
+            {% endfor %}
         </div>
     {% else %}
         <p>You should never see this, quickstart themes missing</p>
