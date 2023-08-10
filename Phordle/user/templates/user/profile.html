@@ -40,6 +40,7 @@
                     <p> You haven't posted any images yet. </p>
                 {% endif %}
 
+<<<<<<< HEAD
                 {% if user_profile_groups %}
                     <p>Groups:</p>
                     {% for group in user_profile_groups %}
@@ -48,6 +49,16 @@
                 {% else %}
                     <p>Not in any groups</p>
                 {% endif %}
+=======
+        {% if user_profile_groups %}
+            <p>Groups:</p>
+            {% for group in user_profile_groups %}
+                <a href="{% url 'group:group_info' group.id %}">{{ group.name }}:Add User</a>
+            {% endfor %}
+        {% else %}
+            <p>Not in any groups</p>
+        {% endif %}
+>>>>>>> 4991b90 (asdasd)
 
                 <a href="{%url 'group:create_group' %}">Create Group</a>
             {% else %}
