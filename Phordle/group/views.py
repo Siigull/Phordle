@@ -42,9 +42,12 @@ def group(request, pk):
 
         return render(request, 'group/detail.html', {'form': form, 'group': group})
     elif request.method == 'POST':
-        form = AddUserForm(request.POST)
-        
-        user = User.objects.filter(username=form.data['add_user'])[0]
+        result_form = AddUserForm(request.POST)
+        form = AddUserForm()
+        try:
+            user = User.objects.filter(username=result_form.data['add_user'])[0]
+        except IndexError:
+            return render(request, 'group/detail.html', {'form':form, 'group': group, 'err':True})
 
         group.users.set([user.pk])
 

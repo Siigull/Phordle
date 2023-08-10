@@ -6,5 +6,8 @@
         {% csrf_token %}    
         {{ form }}
         <button type="submit">Add User</button>
+        {% if err %}
+            <p> User not found </p>
+        {% endif %}
     </form>
 {% endblock %}
