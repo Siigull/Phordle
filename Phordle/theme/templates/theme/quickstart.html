@@ -38,6 +38,7 @@
         {% for i in quickstart_list %}
             <a class="quickstart-link" href="{% url 'theme:theme' i.id %}">
             <p>{{ i.name }}</p>
+            </a>
         {% endfor %}
     {% else %}
         <p>You should never see this, quickstart themes missing</p>
