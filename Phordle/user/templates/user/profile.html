@@ -17,7 +17,7 @@
 
         {% if user_profile_groups %}
             {% for group in user_profile_groups %}
-                <p>group.name</p>
+                <a href="{% url 'group:group' group.id %}">{{ group.name }}</a>
             {% endfor %}
         {% else %}
             <p>Not in any groups</p>

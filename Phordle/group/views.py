@@ -2,11 +2,13 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.views import generic 
 
 from django.forms.formsets import formset_factory
 
 from .forms import GroupForm
 from theme.forms import ThemeForm
+from group.models import Group
 
 def create_group(request):
     GroupFormSet = formset_factory(GroupForm)
@@ -26,6 +28,10 @@ def create_group(request):
                     group = inline_form.save(commit=False)
                     group.theme = theme
                     group.save()
+                    group.users.set([request.user.pk])
             return redirect('profile')
         else:
             return render(request, 'group/create_group.html', {'form': form})
+
+class Group(generic.DetailView):
+    model = Group
