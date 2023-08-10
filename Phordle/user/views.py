@@ -63,7 +63,7 @@ class Profile(generic.ListView):
     context_object_name = 'user_profile_images'
 
     def get_queryset(self):
-        return Group.
+        return Group.objects.filter(user__id__exact=request.user.id)
 
 def sign_in_anon(request):
     return redirect('image_upload')
