@@ -15,9 +15,13 @@
             <p> You haven't posted any images yet. </p>
         {% endif %}
 
-        {% for group in groups %}
-
-        {% endfor %}
+        {% if user_profile_groups %}
+            {% for group in user_profile_groups %}
+                <p>group.name</p>
+            {% endfor %}
+        {% else %}
+            <p>Not in any groups</p>
+        {% endif %}
 
         <a href="{%url 'group:create_group' %}">Create Group</a>
     {% else %}

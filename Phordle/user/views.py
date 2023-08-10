@@ -60,10 +60,10 @@ def sign_out(request):
 
 class Profile(generic.ListView):
     template_name = 'user/profile.html'
-    context_object_name = 'user_profile_images'
+    context_object_name = 'user_profile_groups'
 
     def get_queryset(self):
-        return Group.objects.filter(user__id__exact=request.user.id)
+        return Group.objects.filter(users=self.request.user).all()
 
 def sign_in_anon(request):
     return redirect('image_upload')
