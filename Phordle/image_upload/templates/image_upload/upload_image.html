@@ -7,4 +7,13 @@
     {{ form.as_p }}
     <button type="submit"><></button>
   </form>
+
+  {% if found %}
+    <br><br>
+    <h5>Found words</h5>
+    <br>
+    {% for i in found %}
+      <h6>{{ i }}</h6>
+    {% endfor %}
+  {% endif %}
 {% endblock %}

@@ -17,8 +17,6 @@ from feed.models import Image
 
 ################### cloud-vision because import from another file didnt work
 from google.cloud import vision
-import os
-import json
 from google.oauth2 import service_account
 
 credentials = service_account.Credentials.from_service_account_file('theme/top-chain-394711-21fa8ce1fe35.json')
@@ -26,21 +24,9 @@ credentials = service_account.Credentials.from_service_account_file('theme/top-c
 client = vision.ImageAnnotatorClient(credentials=credentials)
 
 def object_in_photo(content):
-    # with open(f"..{photo}", 'rb') as f:
-    #     content = f.read()
-
     image = vision.Image(content=content)
     response = client.label_detection(image=image)
     return response.label_annotations
-    for label in labels:
-        if label.description == w0:
-            return 0
-        elif label.description == w1:
-            return 1
-        elif label.description == w2:
-            return 2
-    return False
-
 ###################
 
 
