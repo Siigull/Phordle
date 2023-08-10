@@ -3,10 +3,11 @@ from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic 
+from django.contrib.auth.models import User
 
 from django.forms.formsets import formset_factory
 
-from .forms import GroupForm
+from .forms import GroupForm, AddUserForm
 from theme.forms import ThemeForm
 from group.models import Group
 
@@ -33,5 +34,20 @@ def create_group(request):
         else:
             return render(request, 'group/create_group.html', {'form': form})
 
-class Group(generic.DetailView):
-    model = Group
+def group(request, pk):
+    group = Group.objects.get(pk=pk)
+
+    if request.method == 'GET':
+        form = AddUserForm()
+
+        return render(request, 'group/detail.html', {'form': form, 'group': group})
+    elif request.method == 'POST':
+        form = AddUserForm(request.POST)
+        
+        user = User.objects.filter(username=form.data['add_user'])[0]
+
+        group.users.set([user.pk])
+
+        form = AddUserForm()
+
+        return render(request, 'group/detail.html', {'form': form, 'group': group})
