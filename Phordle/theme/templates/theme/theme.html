@@ -4,9 +4,31 @@
     {% csrf_token %}
     <fieldset>
         <h1>{{ theme.name }}</h1>
-        <p>{{ theme.word_0 }}</p>
-        <p>{{ theme.word_1 }}</p>
-        <p>{{ theme.word_2 }}</p>
+        {% if words.word_0 == False %}
+            <p>{{ theme.word_0 }}</p>
+        {% endif %}
+        {% if words.word_1 == False %}
+            <p>{{ theme.word_1 }}</p>
+        {% endif %}
+        {% if words.word_2 == False %}
+            <p>{{ theme.word_2 }}</p>
+        {% endif %}
     </fieldset>
+    <div class>
+        <form class="form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Upload Photo"/>
+        </form>
+    </div>
+    {% if found %}
+    <br><br>
+    <h5>Found words</h5>
+    <br>
+    {% for i in found %}
+        <h6>{{ i }}</h6>
+    {% endfor %}
+    {% endif %}
+
     
 {% endblock %}

@@ -2,10 +2,10 @@
 
 {% block content %}
     {% if  quickstart_list %}
-        {% for theme in quickstart_list %}
+        {% for i in quickstart_list %}
                         
-            <a href="{% url 'theme:theme' theme.id %}">
-            <p>{{ theme.name }}</p>
+            <a href="{% url 'theme:theme' i.id %}">
+            <p>{{ i.name }}</p>
             
         {% endfor %}
     {% else %}

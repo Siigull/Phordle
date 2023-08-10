@@ -1,13 +1,36 @@
 from django.shortcuts import render, redirect
 from .forms import RegisterForm
 from django.contrib import messages
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import login, authenticate, logout, get_user_model
 from django.contrib.auth.views import LoginView
 from django.http import HttpResponse
 from django.views import generic
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 from feed.models import Image
+
+################ random name for anon generator
+import random
+import string
+
+def get_random_string(length):
+    # choose from all lowercase letter
+    letters = string.ascii_lowercase
+    result_str = ''.join(random.choice(letters) for i in range(length))
+    return result_str
+################
+
+def anon_sign_up(request):
+    s = get_random_string(10)
+    username = f"anon{s}"
+    password = f"anon{s}"
+    email = f"anon{s}"
+
+    user = User.objects.create_user(username=username, password=password, email=email)
+    user.save()
+    login(request, user)
+    return redirect('theme:quickstart')
 
 def sign_up(request):
     if request.method == 'GET':
@@ -32,14 +55,14 @@ class SignIn(LoginView):
 def sign_out(request):
     logout(request)
     messages.success(request, "You have logged out successfully.")
-    return HttpResponse()
+    return redirect('feed:feed')
 
 class Profile(generic.ListView):
     template_name = 'user/profile.html'
     context_object_name = 'user_profile_images'
 
     def get_queryset(self):
-        return Image.objects.filter(pub_date__lte=timezone.now()).order_by("-pub_date")
+        return {}
 
 def sign_in_anon(request):
     return redirect('image_upload')

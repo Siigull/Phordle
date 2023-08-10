@@ -3,7 +3,7 @@
 {% block content %}
     <body>
         <div class=container>
-            <form class="form" method="POST" novalidate>
+            <form class="form" method="post" novalidate>
                 {% csrf_token %}
                 {{ form.as_p }}
                 <input type="submit" value="Create Theme" />
