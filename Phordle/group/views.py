@@ -51,3 +51,16 @@ def group(request, pk):
         form = AddUserForm()
 
         return render(request, 'group/detail.html', {'form': form, 'group': group})
+
+
+class GroupList(generic.ListView):
+    template_name = 'user/group_list.html'
+    context_object_name = 'user_groups'
+
+    def get_queryset(self):
+        return Group.objects.filter(users=self.request.user.id).all()
+
+def group_theme(request, pk):
+    theme = Group.objects.get(pk=pk).theme
+
+    return render(request, 'group/group_theme', {})
