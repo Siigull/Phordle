@@ -17,11 +17,15 @@ def create_group(request):
 
         return render(request, 'group/create_group.html', {'form': form, 'formset': formset}) 
     elif request.method == 'POST':
-        form = GroupForm(request.POST)
+        form = ThemeForm(request.POST)
         formset = GroupFormSet(request.POST)
         if all([form.is_valid(), formset.is_valid()]):
-            theme = form.save(commit=False)
-            theme.save()
-            return HttpResponseRedirect(reverse('theme:theme', args = (theme.id,)))
+            theme = form.save()
+            for inline_form in formset:
+                if inline_form.cleaned_data:
+                    group = inline_form.save(commit=False)
+                    group.theme = theme
+                    group.save()
+            return redirect('profile')
         else:
-            return render(request, 'theme/create_theme.html', {'form': form})
+            return render(request, 'group/create_group.html', {'form': form})

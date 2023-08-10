@@ -9,6 +9,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 from feed.models import Image
+from group.models import Group
 
 ################ random name for anon generator
 import random
@@ -62,7 +63,7 @@ class Profile(generic.ListView):
     context_object_name = 'user_profile_images'
 
     def get_queryset(self):
-        return {}
+        return Group.
 
 def sign_in_anon(request):
     return redirect('image_upload')

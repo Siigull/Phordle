@@ -15,6 +15,10 @@
             <p> You haven't posted any images yet. </p>
         {% endif %}
 
+        {% for group in groups %}
+
+        {% endfor %}
+
         <a href="{%url 'group:create_group' %}">Create Group</a>
     {% else %}
         <p>Not logged in</p>
