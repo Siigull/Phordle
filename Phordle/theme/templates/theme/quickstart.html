@@ -33,16 +33,16 @@
     <title>Themes</title>
 </head>
 <body>
+    <div class="container">
     {% if  quickstart_list %}
-        <div class="container">
-            {% for i in quickstart_list %}
-                <a class="quickstart-link" href="{% url 'theme:theme' i.id %}">
-                <p>{{ i.name }}</p>
-            {% endfor %}
-        </div>
+        {% for i in quickstart_list %}
+            <a class="quickstart-link" href="{% url 'theme:theme' i.id %}">
+            <p>{{ i.name }}</p>
+        {% endfor %}
     {% else %}
         <p>You should never see this, quickstart themes missing</p>
     {% endif %}
+    </div>
 </body>
 </html>
 {% endblock %}
