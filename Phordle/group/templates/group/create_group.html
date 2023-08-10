@@ -1,16 +1,52 @@
 {% extends 'base.html' %}
-
 {% block content %}
+<head>
+    <style>
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }    
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--primary-color);
+        border-radius: 1rem;
+        border: solid .5rem var(--secondary-color);
+        padding: 2rem;
+        max-width: 600px;
+        height: 100%;
+
+    }
+
+    .container form {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    input, .form-control {
+        background-color: var(--secondary-color);
+        border-radius: 0.25rem;
+    }
+
+    table {
+        margin: 0;
+    }
+    </style>
+</head>
 <form method="post">
+    <div class="container">
+        {% csrf_token %}
 
-    {% csrf_token %}
-
-    <table>
-        {{ form }}
-        {{ formset }}
-    </table>
-
-    <button>Create Group</button>
-
+        <table>
+            {{ form }}
+            {{ formset }}
+        </table>
+        <button class="btn" type="submit">Submit</button>
+    </div>
+    
 </form>
 {% endblock %}

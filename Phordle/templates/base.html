@@ -6,17 +6,32 @@
     {% bootstrap_css %}
     <!-- Common meta tags, styles, etc. -->
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
         :root {
             --bg-color: #121212;
             --primary-color: #252525;
             --secondary-color: #4c4c4c;
             --font-size: 20px;
-            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-family: 'Inter', sans-serif;
         }
 
         body {
             background-color: var(--bg-color);
+            font-size: var(--font-size);
+            padding: 0;
+            margin: 0;
+            height: 100vh;
         }
+
+        .btn {
+			margin-top: 1.25rem; /* 20px */
+			background-color: var(--secondary-color);
+			color: white;
+			padding: 0.625rem 1.25rem; /* 10px 20px */
+			border: none;
+			border-radius: 0.3125rem; /* 5px */
+			cursor: pointer;
+		}
 
         .custom-navbar {
             background-color: var(--primary-color);     
@@ -30,11 +45,18 @@
             color: white;
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        li.nav-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0rem 2rem 0rem 2rem;
+        }
+
+        h1, h2, h3, h4, h5, h6, label, p {
             color: white;
         }
 
-        p {
+        a {
             color: white;
         }
 
@@ -67,7 +89,7 @@
     </style>
 <head>
 <body>
-    <nav class="navbar navbar-expand-lg custom-navbar">
+    <nav class="navbar navbar-expand-lg custom-navbar fixed-top">
         <ul class="navbar-nav mr-auto">
             <li class='nav-item'>
                 <a class="navbar-brand" href="{% url 'feed:feed' %}">
@@ -80,7 +102,7 @@
                     <a class='nav-link' href="{% url 'logout' %}">Log Out</a>
                 </li>
                 <li class='nav-item'>
-                    <a class='nav-link' href="{% url 'profile' %}">profile</a>
+                    <a class='nav-link' href="{% url 'profile' %}">Profile</a>
                 </li>
             {% else %}
                 <li class='nav-item'>

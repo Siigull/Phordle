@@ -1,8 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <head>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                flex-direction: column;
+            }
+        </style>
+    </head>
     {% if request.user.is_authenticated %}
-        <h1> {{request.user.get_username }} </h1>
+        <h1>Hello {{request.user.get_username }}</h1>
         {% if user_profile_images %}
             <ul>
                 {% for image in user_profile_images %}
@@ -16,6 +27,7 @@
         {% endif %}
 
         {% if user_profile_groups %}
+            <p>Groups:</p>
             {% for group in user_profile_groups %}
                 <a href="{% url 'group:group_info' group.id %}">{{ group.name }}</a>
             {% endfor %}

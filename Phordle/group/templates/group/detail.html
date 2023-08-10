@@ -1,7 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{{ group.name }}</h1>
+<head>
+    <style>
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    </style>
+</head>
+    <h1 style="margin-bottom: 1rem;">{{ group.name }}</h1>
     <form method="post">
         {% csrf_token %}    
         {{ form }}

@@ -1,7 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <head>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                flex-direction: column;
+            }
+        </style>
+    </head>
+
     {% if user_groups %}
+        <h1 style="margin-bottom: 1rem;">Groups</h1>
         {% for group in user_groups %}
             <a href="{% url 'theme:theme' group.theme.id %}">{{ group.name }}</a>
         {% endfor %}

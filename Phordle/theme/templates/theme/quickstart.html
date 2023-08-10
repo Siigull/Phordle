@@ -7,6 +7,12 @@
     <style>
         body {
             height: 100vh;
+            padding: 0;
+            margin: 0; /* Reset default margin */
+            background-color: #121212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .container {
@@ -15,19 +21,27 @@
             align-items: center;
             justify-content: center; /* Center the <a> elements horizontally */            max-width: 600px; /* Adjust the maximum width as needed */
             height: 100%;
-            width: 100%; /* Expand the container to its parent's width */
         }
 
-        .quickstart-link{
+        .quickstart-link {
+            padding: auto;
+            flex: 1; /* Distribute available space equally among children */
             display: flex;
+            flex-direction: column; /* Stack content vertically */
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            flex: 1;
             background-color: var(--secondary-color);
             height: 20vh;
             border-radius: 1rem;
             border: solid .5rem var(--primary-color);
+            transition: transform 0.2s, border 0.2s;
+        }
+
+        .quickstart-link p{
+            color: white;
+            text-transform: uppercase;
+            padding: auto;
         }
     </style>
     <title>Themes</title>

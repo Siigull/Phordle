@@ -1,24 +1,55 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <head>
+        <style>
+            body {
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            .container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: var(--primary-color);
+                border-radius: 1rem;
+                border: solid .5rem var(--secondary-color);
+                padding: 2rem;
+                max-width: 600px;
+            }
+
+            .form {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <div class="container">
     {% csrf_token %}
     <fieldset>
-        <h1>{{ theme.name }}</h1>
+        <h1>Theme: {{ theme.name }}</h1>
         {% if words.word_0 == False %}
-            <p>{{ theme.word_0 }}</p>
+            <p>&nbsp> {{ theme.word_0 }}</p>
         {% endif %}
         {% if words.word_1 == False %}
-            <p>{{ theme.word_1 }}</p>
+            <p>  > {{ theme.word_1 }}</p>
         {% endif %}
         {% if words.word_2 == False %}
-            <p>{{ theme.word_2 }}</p>
+            <p>  > {{ theme.word_2 }}</p>
         {% endif %}
     </fieldset>
     <div class>
         <form class="form" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
-            <input type="submit" value="Upload Photo"/>
+            <input class="btn" type="submit" value="Upload Photo"/>
         </form>
     </div>
     {% if found %}
@@ -29,6 +60,7 @@
         <h6>{{ i }}</h6>
     {% endfor %}
     {% endif %}
+    </div>
 
     
 {% endblock %}
