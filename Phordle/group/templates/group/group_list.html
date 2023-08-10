@@ -10,9 +10,21 @@
                 height: 100vh;
                 flex-direction: column;
             }
+
+            .container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: var(--primary-color);
+                border-radius: 1rem;
+                border: solid .5rem var(--secondary-color);
+                padding: 2rem;
+                max-width: 600px;
+            }
         </style>
     </head>
-
+<div class="container">
     {% if user_groups %}
         <h1 style="margin-bottom: 1rem;">Groups</h1>
         {% for group in user_groups %}
@@ -22,4 +34,5 @@
         <p>Not in any groups</p>
     {% endif %}
     <a href="{%url 'group:create_group' %}">Create Group</a>
+</div>
 {% endblock %}
