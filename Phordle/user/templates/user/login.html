@@ -17,8 +17,7 @@
 			background-color: var(--primary-color);
 			border-radius: 1rem;
 			width: 100%;
-			max-width: 30rem; /* Adjust this as needed for larger screens */
-			height: 65vh; /* Set the card's height to 50% of the viewport height */
+			max-width: 40rem; /* Adjust this as needed for larger screens */
 			padding: 2rem;
 			text-align: center;
 		}
@@ -45,11 +44,16 @@
 		}
 
 		p {
+			color: white;
 			margin: 10px;
 			text-align: left;
 		}
 
 		h2 {
+			color: white;
+		}
+
+		li {
 			color: white;
 		}
 		
@@ -68,6 +72,16 @@
 		input[type="password"]::placeholder {
 			color: var(--bs-gray-200);
 		}
+
+		.btn {
+			margin-top: 1.25rem; /* 20px */
+			background-color: var(--secondary-color);
+			color: white;
+			padding: 0.625rem 1.25rem; /* 10px 20px */
+			border: none;
+			border-radius: 0.3125rem; /* 5px */
+			cursor: pointer;
+		}
 	</style>
 	<title>Log In</title>
 </head>
@@ -78,9 +92,8 @@
 				{% csrf_token %}
 				<h2>Log In</h2>
 				{{form.as_p}}
-				<input type="submit" value="Login" />
-				<a href=""></a>
-				<p>Don't have an account? <a href="{%url 'register' %}">Register</a></p>
+				<input class="btn" type="submit" value="Login" />
+				<p class="text-center">Don't have an account? <a href="{%url 'register' %}">Register</a></p>
 			</form>
 		</div>
 	</div>
